@@ -8,7 +8,7 @@ from spotipy.oauth2 import SpotifyOAuth
 # Spotify API 認証情報
 CLIENT_ID = 'f48dda32a0544428a6808ffc4a03e5ec'
 CLIENT_SECRET = '898a3fa1764d4471aa965cc8044ce02b'
-REDIRECT_URI = 'https://a2-flask-recommendation-app-b.onrender.com/callback'
+REDIRECT_URI = 'https://a2-flask-recommendation-app-b.onrender.com'
 
 SCOPE = 'user-read-recently-played user-library-read user-top-read'
 
