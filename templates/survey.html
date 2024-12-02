@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音楽嗜好アンケート</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <br><br>
+    <h1>推薦前アンケート</h1>
+    <h3>楽曲の好みについてのアンケートです。<br>最も近い選択肢を選択してください。</h3>
+
+    <form method="POST">
+
+        <p>テンポの速い曲が好きですか？</p>
+        <label>
+            <input type="radio" name="tempo_1" value="10"> 非常に当てはまる
+        </label>
+        <label>
+            <input type="radio" name="tempo_1" value="5"> やや当てはまる
+        </label>
+        <label>
+            <input type="radio" name="tempo_1" value="0" checked> どちらでもない
+        </label>
+        <label>
+            <input type="radio" name="tempo_1" value="-5"> あまり当てはまらない
+        </label>
+        <label>
+            <input type="radio" name="tempo_1" value="-10"> 全く当てはまらない
+        </label>
+        <br><br>
+
+        <p>ノリやすい、踊りたくなるような曲が好きですか？</p>
+        <label>
+            <input type="radio" name="danceability_1" value="10"> 非常に当てはまる
+        </label>
+        <label>
+            <input type="radio" name="danceability_1" value="5"> やや当てはまる
+        </label>
+        <label>
+            <input type="radio" name="danceability_1" value="0" checked> どちらでもない
+        </label>
+        <label>
+            <input type="radio" name="danceability_1" value="-5"> あまり当てはまらない
+        </label>
+        <label>
+            <input type="radio" name="danceability_1" value="-10"> 全く当てはまらない
+        </label>
+        <br><br>
+
+        <p>弾き語りのような音楽が好きですか？</p>
+        <label>
+            <input type="radio" name="acousticness_1" value="10"> 非常に当てはまる
+        </label>
+        <label>
+            <input type="radio" name="acousticness_1" value="5"> やや当てはまる
+        </label>
+        <label>
+            <input type="radio" name="acousticness_1" value="0" checked> どちらでもない
+        </label>
+        <label>
+            <input type="radio" name="acousticness_1" value="-5"> あまり当てはまらない
+        </label>
+        <label>
+            <input type="radio" name="acousticness_1" value="-10"> 全く当てはまらない
+        </label>
+        <br><br>
+
+        <p>ゆっくりとしたテンポの曲が好きですか？</p>
+        <label>
+            <input type="radio" name="tempo_2" value="-10"> 非常に当てはまる
+        </label>
+        <label>
+            <input type="radio" name="tempo_2" value="-5"> やや当てはまる
+        </label>
+        <label>
+            <input type="radio" name="tempo_2" value="0" checked> どちらでもない
+        </label>
+        <label>
+            <input type="radio" name="tempo_2" value="5"> あまり当てはまらない
+        </label>
+        <label>
+            <input type="radio" name="tempo_2" value="10"> 全く当てはまらない
+        </label>
+        <br><br>
+
+        <p>穏やかな音楽よりも、元気の出る音楽が好きですか？</p>
+        <label>
+            <input type="radio" name="energy_1" value="10"> 非常に当てはまる
+        </label>
+        <label>
+            <input type="radio" name="energy_1" value="5"> やや当てはまる
+        </label>
+        <label>
+            <input type="radio" name="energy_1" value="0" checked> どちらでもない
+        </label>
+        <label>
+            <input type="radio" name="energy_1" value="-5"> あまり当てはまらない
+        </label>
+        <label>
+            <input type="radio" name="energy_1" value="-10"> 全く当てはまらない
+        </label>
+        <br><br>
+
+        <p>音量が小さい、静かな曲の方が好きですか？</p>
+        <label>
+            <input type="radio" name="loudness_1" value="-10"> 非常に当てはまる
+        </label>
+        <label>
+            <input type="radio" name="loudness_1" value="-5"> やや当てはまる
+        </label>
+        <label>
+            <input type="radio" name="loudness_1" value="0" checked> どちらでもない
+        </label>
+        <label>
+            <input type="radio" name="loudness_1" value="5"> あまり当てはまらない
+        </label>
+        <label>
+            <input type="radio" name="loudness_1" value="10"> 全く当てはまらない
+        </label>
+        <br><br>
+
+        <p>器楽のみ（歌が少ない曲）の音楽が好きですか？</p>
+        <label>
+            <input type="radio" name="instrumentalness_1" value="10"> 非常に当てはまる
+        </label>
+        <label>
+            <input type="radio" name="instrumentalness_1" value="5"> やや当てはまる
+        </label>
+        <label>
+            <input type="radio" name="instrumentalness_1" value="0" checked> どちらでもない
+        </label>
+        <label>
+            <input type="radio" name="instrumentalness_1" value="-5"> あまり当てはまらない
+        </label>
+        <label>
+            <input type="radio" name="instrumentalness_1" value="-10"> 全く当てはまらない
+        </label>
+        <br><br>
+
+        <p>ネガティブでやや暗い雰囲気の曲は好きですか？</p>
+        <label>
+            <input type="radio" name="valence_1" value="-10"> 非常に当てはまる
+        </label>
+        <label>
+            <input type="radio" name="valence_1" value="-5"> やや当てはまる
+        </label>
+        <label>
+            <input type="radio" name="valence_1" value="0" checked> どちらでもない
+        </label>
+        <label>
+            <input type="radio" name="valence_1" value="5"> あまり当てはまらない
+        </label>
+        <label>
+            <input type="radio" name="valence_1" value="10"> 全く当てはまらない
+        </label>
+        <br><br>
+
+        <p>アコースティックな音楽よりもエレクトロニック（電子的な）音楽の方が好きですか？</p>
+        <label>
+            <input type="radio" name="acousticness_2" value="-10"> 非常に当てはまる
+        </label>
+        <label>
+            <input type="radio" name="acousticness_2" value="-5"> やや当てはまる
+        </label>
+        <label>
+            <input type="radio" name="acousticness_2" value="0" checked> どちらでもない
+        </label>
+        <label>
+            <input type="radio" name="acousticness_2" value="5"> あまり当てはまらない
+        </label>
+        <label>
+            <input type="radio" name="acousticness_2" value="10"> 全く当てはまらない
+        </label>
+        <br><br>
+
+        <p>間奏やイントロ、アウトロが短いボーカルメインの曲は好きですか？</p>
+        <label>
+            <input type="radio" name="instrumentalness_2" value="-10"> 非常に当てはまる
+        </label>
+        <label>
+            <input type="radio" name="instrumentalness_2" value="-5"> やや当てはまる
+        </label>
+        <label>
+            <input type="radio" name="instrumentalness_2" value="0" checked> どちらでもない
+        </label>
+        <label>
+            <input type="radio" name="instrumentalness_2" value="5"> あまり当てはまらない
+        </label>
+        <label>
+            <input type="radio" name="instrumentalness_2" value="10"> 全く当てはまらない
+        </label>
+        <br><br>
+
+        <p>リズム感が良くて体を動かしたくなる曲が好きですか？</p>
+        <label>
+            <input type="radio" name="danceability_2" value="10"> 非常に当てはまる
+        </label>
+        <label>
+            <input type="radio" name="danceability_2" value="5"> やや当てはまる
+        </label>
+        <label>
+            <input type="radio" name="danceability_2" value="0" checked> どちらでもない
+        </label>
+        <label>
+            <input type="radio" name="danceability_2" value="-5"> あまり当てはまらない
+        </label>
+        <label>
+            <input type="radio" name="danceability_2" value="-10"> 全く当てはまらない
+        </label>
+        <br><br>
+
+        <p>音量が大きくて迫力のある曲が好きですか？</p>
+        <label>
+            <input type="radio" name="loudness_2" value="10"> 非常に当てはまる
+        </label>
+        <label>
+            <input type="radio" name="loudness_2" value="5"> やや当てはまる
+        </label>
+        <label>
+            <input type="radio" name="loudness_2" value="0" checked> どちらでもない
+        </label>
+        <label>
+            <input type="radio" name="loudness_2" value="-5"> あまり当てはまらない
+        </label>
+        <label>
+            <input type="radio" name="loudness_2" value="-10"> 全く当てはまらない
+        </label>
+        <br><br>
+
+        <p>明るく、ポジティブな感情を感じる曲が好きですか？</p>
+        <label>
+            <input type="radio" name="valence_2" value="10"> 非常に当てはまる
+        </label>
+        <label>
+            <input type="radio" name="valence_2" value="5"> やや当てはまる
+        </label>
+        <label>
+            <input type="radio" name="valence_2" value="0" checked> どちらでもない
+        </label>
+        <label>
+            <input type="radio" name="valence_2" value="-5"> あまり当てはまらない
+        </label>
+        <label>
+            <input type="radio" name="valence_2" value="-10"> 全く当てはまらない
+        </label>
+        <br><br>
+
+        <p>どちらかというとメジャーキー（長調）の曲や明るい曲のほうが好きですか？</p>
+        <label>
+            <input type="radio" name="mode_1" value="10"> 非常に当てはまる
+        </label>
+        <label>
+            <input type="radio" name="mode_1" value="5"> やや当てはまる
+        </label>
+        <label>
+            <input type="radio" name="mode_1" value="0" checked> どちらでもない
+        </label>
+        <label>
+            <input type="radio" name="mode_1" value="-5"> あまり当てはまらない
+        </label>
+        <label>
+            <input type="radio" name="mode_1" value="-10"> 全く当てはまらない
+        </label>
+        <br><br>
+
+        <p>どちらかというとマイナーキー（短調）の曲や暗い曲のほうが好きですか？</p>
+        <label>
+            <input type="radio" name="mode_2" value="-10"> 非常に当てはまる
+        </label>
+        <label>
+            <input type="radio" name="mode_2" value="-5"> やや当てはまる
+        </label>
+        <label>
+            <input type="radio" name="mode_2" value="0" checked> どちらでもない
+        </label>
+        <label>
+            <input type="radio" name="mode_2" value="5"> あまり当てはまらない
+        </label>
+        <label>
+            <input type="radio" name="mode_2" value="10"> 全く当てはまらない
+        </label>
+        <br><br>
+
+        <p>激しく、エネルギッシュな曲が好きですか？</p>
+        <label>
+            <input type="radio" name="energy_2" value="10"> 非常に当てはまる
+        </label>
+        <label>
+            <input type="radio" name="energy_2" value="5"> やや当てはまる
+        </label>
+        <label>
+            <input type="radio" name="energy_2" value="0" checked> どちらでもない
+        </label>
+        <label>
+            <input type="radio" name="energy_2" value="-5"> あまり当てはまらない
+        </label>
+        <label>
+            <input type="radio" name="energy_2" value="-10"> 全く当てはまらない
+        </label>
+        <br><br>
+
+        <!-- 送信ボタン -->
+        <section>
+            <button type="submit">送信</button>
+        </section>
+    </form>
+</body>
+</html>

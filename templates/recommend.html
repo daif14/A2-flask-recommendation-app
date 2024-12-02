@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>推薦曲</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>推薦曲</h1>
+            <!-- ログアウトボタン -->
+            <form action="{{ url_for('logout') }}" method="get">
+                <button type="submit" class="logout-btn">ログアウト</button>
+            </form>
+        </header>
+
+        <!-- 推薦された曲のリスト -->
+        <section class="recommendations">
+            <ul>
+                {% for recommendation in recommendations %}
+                <li class="recommendation-item">
+                    <strong>{{ recommendation.track_name }}</strong> by <em>{{ recommendation.artist_name }}</em><br>
+                    <a href="{{ recommendation.track_url }}" target="_blank" class="spotify-link">Spotifyで曲を聴く</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+
+</body>
+</html>
