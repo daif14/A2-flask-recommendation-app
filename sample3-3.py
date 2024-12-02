@@ -192,5 +192,5 @@ def logout():
 
 
 if __name__ == '__main__':
-    port = int(os.getenv('PORT', 8888))  # PORT環境変数がない場合はデフォルトで5000を使用
+    port = int(os.getenv('PORT', 8888))  # PORT環境変数がない場合はデフォルトで8888を使用
     app.run(debug=True, host='0.0.0.0', port=port)
