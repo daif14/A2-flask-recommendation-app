@@ -194,7 +194,7 @@ h1 {
     transition: background-color 0.3s ease;
     position: fixed;  /* 右上に固定 */
     top: 20px;  /* 上から20px */
-    right: 170px;  /* 右から180px */
+    right: 30px;  /* 右から180px */
     z-index: 1000;  /* 他の要素の上に表示されるように */
     margin: 0;  /* 他の要素に影響されないように */
 }
