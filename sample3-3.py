@@ -110,29 +110,49 @@ def load_all_genre_data():
 
     return all_data_df
 
-# 推薦システム
+# 再生履歴を取得する関数
+def get_user_recent_tracks():
+    token_info = session.get('token_info', None)
+    if not token_info:
+        return []
+
+    sp_auth = SpotifyOAuth(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, redirect_uri=REDIRECT_URI, scope=SCOPE)
+    sp = spotipy.Spotify(auth=token_info['access_token'])
+
+    try:
+        recent_tracks = sp.current_user_recently_played(limit=50)
+        track_names = [item['track']['name'] for item in recent_tracks['items']]
+        return track_names
+    except Exception as e:
+        print(f"Error fetching recent tracks: {e}")
+        return []
+
+# 推薦システム（再生履歴を除外）
 def recommend_top_songs(user_preferences, all_genre_data):
     user_preferences_df = pd.DataFrame([user_preferences])
     genre_features = all_genre_data[FEATURES]
-    cosine_sim = cosine_similarity(user_preferences_df[FEATURES], genre_features)
+
+    # 再生履歴を取得
+    recent_tracks = get_user_recent_tracks()
+    
+    # 再生履歴に含まれるトラックを除外
+    filtered_genre_data = all_genre_data[~all_genre_data['track_name'].isin(recent_tracks)]
+    
+    # コサイン類似度を計算
+    cosine_sim = cosine_similarity(user_preferences_df[FEATURES], filtered_genre_data[FEATURES])
     sim_scores = cosine_sim[0]
     top_indices = sim_scores.argsort()[::-1]
 
     recommendations = []
     for idx in top_indices:
-        track_id = all_genre_data.iloc[idx]['id']
-        recommendation = all_genre_data[['track_name', 'artist_name', 'id']].iloc[idx]
+        track_id = filtered_genre_data.iloc[idx]['id']
+        recommendation = filtered_genre_data[['track_name', 'artist_name', 'id']].iloc[idx]
         recommendation['track_url'] = f"https://open.spotify.com/track/{track_id}"
         recommendations.append(recommendation)
         if len(recommendations) >= 7:
             break
 
     return pd.DataFrame(recommendations)
-
-# indexページ（アンケート後のページ）
-@app.route('/index')
-def index():
-    return render_template('index.html')
 
 # 推薦を表示するページ
 @app.route('/recommend', methods=['GET'])
@@ -149,6 +169,11 @@ def recommend():
         return render_template('recommend.html', recommendations=recommendations.to_dict(orient='records'))
 
     return jsonify(recommendations)
+
+# indexページ（アンケート後のページ）
+@app.route('/index')
+def index():
+    return render_template('index.html')
 
 # ログインページ（Spotify認証ページ）
 @app.route('/login')
